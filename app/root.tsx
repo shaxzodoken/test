@@ -7,6 +7,7 @@ import {
   Link,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import { CartProvider, useCart } from "~/utils/cart";
 
 import "./tailwind.css";
 
@@ -41,26 +42,41 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Navigation() {
+  const { items } = useCart();
+  const count = items.reduce((sum, i) => sum + i.quantity, 0);
+  return (
+    <header className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
+      <nav className="container mx-auto flex items-center justify-between p-4">
+        <Link to="/" className="text-xl font-bold">
+          Acme Store
+        </Link>
+        <ul className="flex gap-4">
+          <li>
+            <Link to="/products" className="hover:underline">
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" className="hover:underline">
+              Cart ({count})
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+}
+
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="border-b">
-        <nav className="container mx-auto flex items-center justify-between p-4">
-          <Link to="/" className="text-xl font-bold">
-            Acme Store
-          </Link>
-          <ul className="flex gap-4">
-            <li>
-              <Link to="/products" className="hover:underline">
-                Products
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-    </div>
+    <CartProvider>
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+      </div>
+    </CartProvider>
   );
 }
