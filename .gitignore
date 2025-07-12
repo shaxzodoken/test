@@ -3,3 +3,14 @@ node_modules
 /.cache
 /build
 .env
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.docx
+*.woff
+*.ttf
+*.ico
+*.bin
+*.wasm
+*.exe
