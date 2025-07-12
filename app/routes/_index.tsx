@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react";
 import { products } from "~/data/products";
 import { ProductCard } from "~/components/ProductCard";
 
+
 export const meta: MetaFunction = () => [
   { title: "Acme Store" },
   { name: "description", content: "Your next favorite ecommerce platform" },
@@ -98,18 +99,17 @@ export default function Index() {
         <h2 className="mb-6 text-center text-3xl font-semibold">Featured Products</h2>
         <ul className="grid gap-6 md:grid-cols-3">
           {products.map((p) => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              actions={
-                <Link
-                  to={`/products/${p.id}`}
-                  className="flex-1 rounded border px-3 py-2 text-blue-600 hover:bg-gray-100"
-                >
-                  View details
-                </Link>
-              }
-            />
+            <li key={p.id} className="flex flex-col items-center rounded border p-4 text-center">
+              <img src={p.image} alt={p.name} className="mb-2 h-40 w-full rounded object-cover" />
+              <h3 className="font-semibold">{p.name}</h3>
+              <p className="mb-2 text-gray-600">${p.price.toFixed(2)}</p>
+              <Link
+                to={`/products/${p.id}`}
+                className="rounded border px-3 py-2 text-blue-600 hover:bg-gray-100"
+              >
+                View details
+              </Link>
+            </li>
           ))}
         </ul>
       </section>

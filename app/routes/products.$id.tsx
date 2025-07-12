@@ -31,32 +31,28 @@ export default function ProductDetail() {
     </svg>
   ));
 
+
   return (
-    <div className="mx-auto max-w-6xl p-4">
+    <div className="mx-auto max-w-4xl p-4">
       <Link to="/products" className="text-blue-600 hover:underline">
         &larr; Back to products
       </Link>
-      <div className="mt-6 grid gap-10 md:grid-cols-2">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full rounded-xl object-cover shadow-md"
-        />
-        <div className="space-y-6">
-          <div>
-            <h1 className="text-4xl font-bold">{product.name}</h1>
-            <p className="text-gray-600">{product.description}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            {stars}
-            <span className="text-sm text-gray-500">{product.rating.toFixed(1)}</span>
-          </div>
-          <p className="font-medium text-gray-700">Category: {product.category}</p>
+      <div className="mt-4 grid gap-6 md:grid-cols-2">
+        <img src={product.image} alt={product.name} className="w-full rounded object-cover" />
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <p className="text-gray-600">{product.description}</p>
+          <p className="font-medium">Category: {product.category}</p>
+          <p className="">Rating: {product.rating} / 5</p>
           <p className="text-gray-700">{product.details}</p>
           <p className="text-2xl font-semibold">${product.price.toFixed(2)}</p>
+        <div>
+          <h1 className="mb-2 text-2xl font-bold">{product.name}</h1>
+          <p className="mb-4 text-gray-600">{product.description}</p>
+          <p className="mb-4 text-xl font-semibold">${product.price.toFixed(2)}</p>
           <button
             onClick={() => addItem(product)}
-            className="rounded bg-blue-600 px-6 py-3 text-white hover:bg-blue-700"
+            className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             Add to Cart
           </button>
