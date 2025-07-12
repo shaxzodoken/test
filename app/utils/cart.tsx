@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+
 
 export type CartItem = {
   id: number;
@@ -20,6 +21,21 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem("cart");
+    if (stored) {
+      try {
+        setItems(JSON.parse(stored));
+      } catch {
+        // ignore parse errors
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(items));
+  }, [items]);
 
   function addItem(item: Omit<CartItem, "quantity">) {
     setItems((prev) => {

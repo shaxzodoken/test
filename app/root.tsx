@@ -45,8 +45,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 function Navigation() {
   const { items } = useCart();
   const count = items.reduce((sum, i) => sum + i.quantity, 0);
-  return (
-    <header className="border-b">
+  return (whzce5-codex/create-complete-ui-design-for-web-store
+    <header className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
       <nav className="container mx-auto flex items-center justify-between p-4">
         <Link to="/" className="text-xl font-bold">
           Acme Store
