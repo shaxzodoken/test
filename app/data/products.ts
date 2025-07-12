@@ -13,7 +13,6 @@ export type Product = {
   category: string;
   /** Product rating from 0 to 5 */
   rating: number;
-
 };
 
 export const products: Product[] = [
@@ -43,7 +42,6 @@ export const products: Product[] = [
       "Features a stainless steel case, genuine leather strap and water resistance up to 50 meters.",
     category: "Accessories",
     rating: 4.8,
-
   },
   {
     id: 3,
@@ -57,6 +55,5 @@ export const products: Product[] = [
       "Wireless headphones offering noise isolation, Bluetooth connectivity and a 20-hour battery life.",
     category: "Electronics",
     rating: 4.2,
-
   },
 ];

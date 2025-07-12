@@ -105,7 +105,6 @@ export default function Index() {
                 to={`/products/${p.id}`}
                 className="rounded border px-3 py-2 text-blue-600 hover:bg-gray-100"
               >
-
                 View details
               </Link>
             </li>
