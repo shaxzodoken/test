@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
@@ -31,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -41,5 +42,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="border-b">
+        <nav className="container mx-auto flex items-center justify-between p-4">
+          <Link to="/" className="text-xl font-bold">
+            Acme Store
+          </Link>
+          <ul className="flex gap-4">
+            <li>
+              <Link to="/products" className="hover:underline">
+                Products
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+    </div>
+  );
 }
