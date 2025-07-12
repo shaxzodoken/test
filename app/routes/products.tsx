@@ -3,6 +3,7 @@ import { Link } from "@remix-run/react";
 import { products } from "~/data/products";
 import { useCart } from "~/utils/cart";
 
+
 export const meta: MetaFunction = () => [{ title: "Products - Acme Store" }];
 
 const products = [
@@ -33,6 +34,7 @@ export default function Products() {
       <h1 className="mb-6 text-2xl font-bold">Products</h1>
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {products.map((p) => (
+
           <li key={p.id} className="flex flex-col items-center rounded border p-4 text-center">
             <Link to={`/products/${p.id}`} className="w-full">
               <img

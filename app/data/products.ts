@@ -28,7 +28,6 @@ export const products: Product[] = [
       "These shoes are crafted from premium leather and feature a cushioned sole for all-day comfort.",
     category: "Footwear",
     rating: 4.5,
-
   },
   {
     id: 2,

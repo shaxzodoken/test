@@ -1,6 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { products } from "~/data/products";
+import { ProductCard } from "~/components/ProductCard";
+
 
 export const meta: MetaFunction = () => [
   { title: "Acme Store" },
