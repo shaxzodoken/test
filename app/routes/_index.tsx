@@ -101,7 +101,11 @@ export default function Index() {
               <img src={p.image} alt={p.name} className="mb-2 h-40 w-full rounded object-cover" />
               <h3 className="font-semibold">{p.name}</h3>
               <p className="mb-2 text-gray-600">${p.price.toFixed(2)}</p>
-              <Link to={`/products/${p.id}`} className="text-blue-600 hover:underline">
+              <Link
+                to={`/products/${p.id}`}
+                className="rounded border px-3 py-2 text-blue-600 hover:bg-gray-100"
+              >
+
                 View details
               </Link>
             </li>
@@ -120,6 +124,5 @@ export default function Index() {
         </Link>
       </section>
     </>
-
   );
 }

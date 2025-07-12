@@ -5,7 +5,6 @@ import { useCart } from "~/utils/cart";
 
 export const meta: MetaFunction = () => [{ title: "Products - Acme Store" }];
 
-
 const products = [
   {
     id: 1,
@@ -41,6 +40,28 @@ export default function Products() {
                 alt={p.name}
                 className="mb-2 h-40 w-full rounded object-cover"
               />
+            </Link>
+            <Link
+              to={`/products/${p.id}`}
+              className="text-lg font-semibold hover:underline"
+            >
+              {p.name}
+            </Link>
+            <p className="text-gray-600">${p.price.toFixed(2)}</p>
+            <div className="mt-2 flex w-full gap-2">
+              <Link
+                to={`/products/${p.id}`}
+                className="flex-1 rounded border px-3 py-2 hover:bg-gray-100"
+              >
+                View Details
+              </Link>
+              <button
+                onClick={() => addItem(p)}
+                className="flex-1 rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700"
+              >
+                Add to Cart
+              </button>
+            </div>
               <h2 className="text-lg font-semibold hover:underline">{p.name}</h2>
             </Link>
             <p className="text-gray-600">${p.price.toFixed(2)}</p>
