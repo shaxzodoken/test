@@ -44,6 +44,7 @@ export default function Cart() {
                       Remove
                     </button>
                   </div>
+
                 </div>
               </li>
             ))}
