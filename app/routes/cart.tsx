@@ -5,7 +5,7 @@ import { useCart } from "~/utils/cart";
 export const meta: MetaFunction = () => [{ title: "Cart - Acme Store" }];
 
 export default function Cart() {
-  const { items, removeItem, clearCart } = useCart();
+  const { items, removeItem, updateQuantity, clearCart } = useCart();
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -23,13 +23,27 @@ export default function Cart() {
                 <div className="flex-grow">
                   <h2 className="font-semibold">{item.name}</h2>
                   <p className="text-gray-600">${item.price.toFixed(2)}</p>
-                  <p>Quantity: {item.quantity}</p>
-                  <button
-                    onClick={() => removeItem(item.id)}
-                    className="text-sm text-red-600 hover:underline"
-                  >
-                    Remove
-                  </button>
+                  <div className="mt-2 flex items-center gap-2">
+                    <button
+                      onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+                      className="rounded border px-2 py-1"
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      className="rounded border px-2 py-1"
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className="ml-4 text-sm text-red-600 hover:underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </li>
             ))}
